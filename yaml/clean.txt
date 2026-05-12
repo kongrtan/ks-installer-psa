@@ -27,3 +27,5 @@ admin P@88w0rd
 
 
 kubectl delete pod -n kubesphere-system -l app=ks-installer
+
+kubectl apply -f ./installer/roles/ks-monitor/files/notification-manager/crds/.
