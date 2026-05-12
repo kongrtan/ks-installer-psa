@@ -24,3 +24,6 @@ kubectl delete pvc -n kubesphere-system [PVC_NAME]
 
 
 admin P@88w0rd
+
+
+kubectl delete pod -n kubesphere-system -l app=ks-installer

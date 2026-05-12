@@ -302,6 +302,12 @@ spec:
       - name: installer
         image: kongrtan/ks-installer-psa:0.1
         imagePullPolicy: "Always"
+        env:
+        - name: ANSIBLE_STDOUT_CALLBACK
+          value: "debug"  # Ansible 실행 시 상세한 결과(task별 상세 정보)를 출력합니다.
+        # 인스톨러 자체 로그 수준을 높이고 싶을 때 (이미지 사양에 따라 다를 수 있음)
+        - name: LOG_LEVEL
+          value: "debug"  
         # 컨테이너 수준의 보안 설정
         securityContext:
           allowPrivilegeEscalation: false  # 권한 상승 금지
