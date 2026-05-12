@@ -1,0 +1,113 @@
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [localhost] ***************************************************************
+
+TASK [download : Generating images list] ***************************************
+skipping: [localhost]
+
+TASK [download : Synchronizing images] *****************************************
+
+TASK [kubesphere-defaults : KubeSphere | Setting images' namespace override] ***
+skipping: [localhost]
+
+TASK [kubesphere-defaults : KubeSphere | Configuring defaults] *****************
+ok: [localhost] => {
+    "msg": "Check roles/kubesphere-defaults/defaults/main.yml"
+}
+
+TASK [ks-core/config : KubeSphere | Getting sonarqube host] ********************
+changed: [localhost]
+
+TASK [ks-core/config : KubeSphere | Getting sonarqube token] *******************
+changed: [localhost]
+
+TASK [ks-core/config : set_fact] ***********************************************
+skipping: [localhost]
+
+TASK [ks-core/config : set_fact] ***********************************************
+skipping: [localhost]
+
+TASK [ks-core/config : KubeSphere | Getting es index prefix] *******************
+changed: [localhost]
+
+TASK [ks-core/config : set_fact] ***********************************************
+skipping: [localhost]
+
+TASK [ks-core/config : KubeSphere | Getting token] *****************************
+changed: [localhost]
+
+TASK [ks-core/config : KubeSphere | Getting ks-secret] *************************
+changed: [localhost]
+
+TASK [ks-core/config : debug] **************************************************
+ok: [localhost] => {
+    "msg": "Current Kubernetes version is v1.30.4"
+}
+
+TASK [ks-core/config : KubeSphere | Setting kubectl image version] *************
+ok: [localhost] => (item={'key': 'v1.22.0', 'value': 'v1.22.0'})
+skipping: [localhost] => (item={'key': 'v1.21.0', 'value': 'v1.21.0'}) 
+skipping: [localhost] => (item={'key': 'v1.20.0', 'value': 'v1.20.0'}) 
+skipping: [localhost] => (item={'key': 'v1.19.0', 'value': 'v1.19.1'}) 
+skipping: [localhost] => (item={'key': 'v1.18.0', 'value': 'v1.18.0'}) 
+skipping: [localhost] => (item={'key': 'v1.17.0', 'value': 'v1.17.0'}) 
+skipping: [localhost] => (item={'key': 'v1.16.0', 'value': 'v1.16.0'}) 
+skipping: [localhost] => (item={'key': 'v1.15.0', 'value': 'v1.0.0'}) 
+
+TASK [ks-core/config : debug] **************************************************
+ok: [localhost] => {
+    "msg": "Current kubectl image version is v1.22.0"
+}
+
+TASK [ks-core/config : KubeSphere | Getting Kubernetes master num] *************
+changed: [localhost]
+
+TASK [ks-core/config : KubeSphere | Setting master num] ************************
+ok: [localhost]
+
+TASK [ks-core/config : OpenPitrix | Check OpenPitrix v3.0.0] *******************
+changed: [localhost]
+
+TASK [ks-core/config : set_fact] ***********************************************
+skipping: [localhost]
+
+TASK [ks-core/config : KubeSphere | Creating manifests] ************************
+changed: [localhost] => (item={'name': 'kubesphere-config', 'file': 'kubesphere-config.yaml', 'type': 'cm'})
+
+TASK [ks-core/config : KubeSphere | Initing KubeSphere] ************************
+changed: [localhost] => (item=kubesphere-config.yaml)
+
+TASK [ks-core/config : OpenPitrix | Getting openpitrix jobs installation files] ***
+skipping: [localhost] => (item=openpitrix) 
+
+TASK [ks-core/config : OpenPitrix | Creating openpitrix jobs manifests] ********
+skipping: [localhost] => (item={'path': 'openpitrix', 'file': 'ks-openpitrix-upgrade.yaml'}) 
+
+TASK [ks-core/config : OpenPitrix | Upgrade OpenPitrix] ************************
+skipping: [localhost]
+
+TASK [ks-core/config : OpenPitrix | Delete namespace openpitrix-system] ********
+skipping: [localhost]
+
+TASK [ks-core/config : Alerting | Checking status v3.0.0] **********************
+changed: [localhost]
+
+TASK [ks-core/config : Alerting | Getting migration files] *********************
+skipping: [localhost] => (item=alerting-migration) 
+
+TASK [ks-core/config : Alerting | Getting migration files] *********************
+skipping: [localhost] => (item={'path': 'alerting-migration', 'file': 'ks-alerting-migration.yaml'}) 
+
+TASK [ks-core/config : Alerting | Creating migration job] **********************
+skipping: [localhost]
+
+TASK [ks-core/config : Alerting | Getting migration job status] ****************
+skipping: [localhost]
+
+TASK [ks-core/config : Alerting | Getting migration job status] ****************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=15   changed=10   unreachable=0    failed=0    skipped=16   rescued=0    ignored=0   

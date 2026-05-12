@@ -1,0 +1,1 @@
+{"event": "verbose", "uuid": "54b77a67-5f13-437a-b9ba-f485031ea81a", "counter": 3, "stdout": "the implicit localhost does not match 'all'", "start_line": 2, "end_line": 3, "runner_ident": "openpitrix", "created": "2026-05-12T03:06:44.056939"}

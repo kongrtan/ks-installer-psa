@@ -1,0 +1,452 @@
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [localhost] ***************************************************************
+
+TASK [download : Generating images list] ***************************************
+skipping: [localhost]
+
+TASK [download : Synchronizing images] *****************************************
+
+TASK [kubesphere-defaults : KubeSphere | Setting images' namespace override] ***
+skipping: [localhost]
+
+TASK [kubesphere-defaults : KubeSphere | Configuring defaults] *****************
+ok: [localhost] => {
+    "msg": "Check roles/kubesphere-defaults/defaults/main.yml"
+}
+
+TASK [common : KubeSphere | Checking kube-node-lease namespace] ****************
+changed: [localhost]
+
+TASK [common : KubeSphere | Getting system namespaces] *************************
+ok: [localhost]
+
+TASK [common : set_fact] *******************************************************
+ok: [localhost]
+
+TASK [common : debug] **********************************************************
+ok: [localhost] => {
+    "msg": [
+        "kubesphere-system",
+        "kubesphere-controls-system",
+        "kubesphere-monitoring-system",
+        "kubesphere-monitoring-federated",
+        "kube-node-lease",
+        "kube-federation-system"
+    ]
+}
+
+TASK [common : KubeSphere | Creating KubeSphere namespace] *********************
+changed: [localhost] => (item=kubesphere-system)
+changed: [localhost] => (item=kubesphere-controls-system)
+changed: [localhost] => (item=kubesphere-monitoring-system)
+changed: [localhost] => (item=kubesphere-monitoring-federated)
+changed: [localhost] => (item=kube-node-lease)
+changed: [localhost] => (item=kube-federation-system)
+
+TASK [common : KubeSphere | Labeling system-workspace] *************************
+changed: [localhost] => (item=default)
+changed: [localhost] => (item=kube-public)
+changed: [localhost] => (item=kube-system)
+changed: [localhost] => (item=kubesphere-system)
+changed: [localhost] => (item=kubesphere-controls-system)
+changed: [localhost] => (item=kubesphere-monitoring-system)
+changed: [localhost] => (item=kubesphere-monitoring-federated)
+changed: [localhost] => (item=kube-node-lease)
+changed: [localhost] => (item=kube-federation-system)
+
+TASK [common : KubeSphere | Labeling namespace for network policy] *************
+changed: [localhost]
+
+TASK [common : KubeSphere | Getting Kubernetes master num] *********************
+changed: [localhost]
+
+TASK [common : KubeSphere | Setting master num] ********************************
+ok: [localhost]
+
+TASK [KubeSphere | Getting common component installation files] ****************
+changed: [localhost] => (item=common)
+
+TASK [common : KubeSphere | Checking Kubernetes version] ***********************
+changed: [localhost]
+
+TASK [KubeSphere | Getting common component installation files] ****************
+changed: [localhost] => (item=snapshot-controller)
+
+TASK [common : KubeSphere | Creating snapshot controller values] ***************
+changed: [localhost] => (item={'name': 'custom-values-snapshot-controller', 'file': 'custom-values-snapshot-controller.yaml'})
+
+TASK [common : KubeSphere | Updating snapshot crd] *****************************
+changed: [localhost]
+
+TASK [common : KubeSphere | Deploying snapshot controller] *********************
+changed: [localhost]
+
+TASK [KubeSphere | Checking openpitrix common component] ***********************
+changed: [localhost]
+
+TASK [common : include_tasks] **************************************************
+skipping: [localhost] => (item={'op': 'openpitrix-db', 'ks': 'mysql-pvc'}) 
+skipping: [localhost] => (item={'op': 'openpitrix-etcd', 'ks': 'etcd-pvc'}) 
+
+TASK [common : Getting PersistentVolumeName (mysql)] ***************************
+skipping: [localhost]
+
+TASK [common : Getting PersistentVolumeSize (mysql)] ***************************
+skipping: [localhost]
+
+TASK [common : Setting PersistentVolumeName (mysql)] ***************************
+skipping: [localhost]
+
+TASK [common : Setting PersistentVolumeSize (mysql)] ***************************
+skipping: [localhost]
+
+TASK [common : Getting PersistentVolumeName (etcd)] ****************************
+skipping: [localhost]
+
+TASK [common : Getting PersistentVolumeSize (etcd)] ****************************
+skipping: [localhost]
+
+TASK [common : Setting PersistentVolumeName (etcd)] ****************************
+skipping: [localhost]
+
+TASK [common : Setting PersistentVolumeSize (etcd)] ****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking mysql PersistentVolumeClaim] **************
+changed: [localhost]
+
+TASK [common : KubeSphere | Setting mysql db pv size] **************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking redis PersistentVolumeClaim] **************
+changed: [localhost]
+
+TASK [common : KubeSphere | Setting redis db pv size] **************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking minio PersistentVolumeClaim] **************
+changed: [localhost]
+
+TASK [common : KubeSphere | Setting minio pv size] *****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking openldap PersistentVolumeClaim] ***********
+changed: [localhost]
+
+TASK [common : KubeSphere | Setting openldap pv size] **************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking etcd db PersistentVolumeClaim] ************
+changed: [localhost]
+
+TASK [common : KubeSphere | Setting etcd pv size] ******************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking redis ha PersistentVolumeClaim] ***********
+changed: [localhost]
+
+TASK [common : KubeSphere | Setting redis ha pv size] **************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking es-master PersistentVolumeClaim] **********
+changed: [localhost]
+
+TASK [common : KubeSphere | Setting es master pv size] *************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking es data PersistentVolumeClaim] ************
+changed: [localhost]
+
+TASK [common : KubeSphere | Setting es data pv size] ***************************
+skipping: [localhost]
+
+TASK [KubeSphere | Creating common component manifests] ************************
+changed: [localhost] => (item={'path': 'redis', 'file': 'redis.yaml'})
+
+TASK [common : KubeSphere | Deploying etcd and mysql] **************************
+skipping: [localhost] => (item=etcd.yaml) 
+skipping: [localhost] => (item=mysql.yaml) 
+
+TASK [common : KubeSphere | Getting minio installation files] ******************
+skipping: [localhost] => (item=minio-ha) 
+
+TASK [common : KubeSphere | Creating manifests] ********************************
+skipping: [localhost] => (item={'name': 'custom-values-minio', 'file': 'custom-values-minio.yaml'}) 
+
+TASK [common : KubeSphere | Checking minio] ************************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying minio] ***********************************
+skipping: [localhost]
+
+TASK [common : debug] **********************************************************
+skipping: [localhost]
+
+TASK [common : fail] ***********************************************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Importing minio status] ****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Generet Random password] ***************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Creating Redis Password Secret] ********************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting redis installation files] ******************
+skipping: [localhost] => (item=redis-ha) 
+
+TASK [common : KubeSphere | Creating manifests] ********************************
+skipping: [localhost] => (item={'name': 'custom-values-redis', 'file': 'custom-values-redis.yaml'}) 
+
+TASK [common : KubeSphere | Checking old redis status] *************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deleting and backup old redis svc] *****************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying redis] ***********************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying redis] ***********************************
+skipping: [localhost] => (item=redis.yaml) 
+
+TASK [common : KubeSphere | Importing redis status] ****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting openldap installation files] ***************
+skipping: [localhost] => (item=openldap-ha) 
+
+TASK [common : KubeSphere | Creating manifests] ********************************
+skipping: [localhost] => (item={'name': 'custom-values-openldap', 'file': 'custom-values-openldap.yaml'}) 
+
+TASK [common : KubeSphere | Checking old openldap status] **********************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Shutdown ks-account] *******************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deleting and backup old openldap svc] **************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking openldap] *********************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying openldap] ********************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Loading old openldap data] *************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking openldap-ha status] ***********************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting openldap-ha pod list] **********************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting old openldap data] *************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Migrating openldap data] ***************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Disabling old openldap] ****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Restarting openldap] *******************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Restarting ks-account] *****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Importing openldap status] *************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking KubeSphere Config is Exists] **************
+changed: [localhost]
+
+TASK [common : KubeSphere | Generet Random password] ***************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Creating Redis Password Secret] ********************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting redis installation files] ******************
+skipping: [localhost] => (item=redis-ha) 
+
+TASK [common : KubeSphere | Creating manifests] ********************************
+skipping: [localhost] => (item={'name': 'custom-values-redis', 'file': 'custom-values-redis.yaml'}) 
+
+TASK [common : KubeSphere | Checking old redis status] *************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deleting and backup old redis svc] *****************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying redis] ***********************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying redis] ***********************************
+skipping: [localhost] => (item=redis.yaml) 
+
+TASK [common : KubeSphere | Importing redis status] ****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting openldap installation files] ***************
+skipping: [localhost] => (item=openldap-ha) 
+
+TASK [common : KubeSphere | Creating manifests] ********************************
+skipping: [localhost] => (item={'name': 'custom-values-openldap', 'file': 'custom-values-openldap.yaml'}) 
+
+TASK [common : KubeSphere | Checking old openldap status] **********************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Shutdown ks-account] *******************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deleting and backup old openldap svc] **************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking openldap] *********************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying openldap] ********************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Loading old openldap data] *************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking openldap-ha status] ***********************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting openldap-ha pod list] **********************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting old openldap data] *************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Migrating openldap data] ***************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Disabling old openldap] ****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Restarting openldap] *******************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Restarting ks-account] *****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Importing openldap status] *************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting minio installation files] ******************
+skipping: [localhost] => (item=minio-ha) 
+
+TASK [common : KubeSphere | Creating manifests] ********************************
+skipping: [localhost] => (item={'name': 'custom-values-minio', 'file': 'custom-values-minio.yaml'}) 
+
+TASK [common : KubeSphere | Checking minio] ************************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying minio] ***********************************
+skipping: [localhost]
+
+TASK [common : debug] **********************************************************
+skipping: [localhost]
+
+TASK [common : fail] ***********************************************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Importing minio status] ****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting elasticsearch and curator installation files] ***
+skipping: [localhost]
+
+TASK [common : KubeSphere | Creating custom manifests] *************************
+skipping: [localhost] => (item={'name': 'custom-values-elasticsearch', 'file': 'custom-values-elasticsearch.yaml'}) 
+skipping: [localhost] => (item={'name': 'custom-values-elasticsearch-curator', 'file': 'custom-values-elasticsearch-curator.yaml'}) 
+
+TASK [common : KubeSphere | Checking elasticsearch data StatefulSet] ***********
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking elasticsearch storageclass] ***************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Commenting elasticsearch storageclass parameter] ***
+skipping: [localhost]
+
+TASK [common : KubeSphere | Creating elasticsearch credentials secret] *********
+skipping: [localhost]
+
+TASK [common : KubeSphere | Checking internal es] ******************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying elasticsearch-logging] *******************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting PersistentVolume Name] *********************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Patching PersistentVolume (persistentVolumeReclaimPolicy)] ***
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deleting elasticsearch] ****************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Waiting for seconds] *******************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying elasticsearch-logging] *******************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Importing es status] *******************************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying elasticsearch-logging-curator] ***********
+skipping: [localhost]
+
+TASK [common : KubeSphere | Getting fluentbit installation files] **************
+skipping: [localhost]
+
+TASK [common : ks-logging | Getting Kubernetes Node info] **********************
+skipping: [localhost]
+
+TASK [common : ks-logging | Setting container runtime of kubernetes] ***********
+skipping: [localhost]
+
+TASK [common : ks-logging | Setting container runtime of kubernetes] ***********
+skipping: [localhost]
+
+TASK [common : ks-logging | Debug container_runtime] ***************************
+skipping: [localhost]
+
+TASK [common : ks-logging | Debug logging_container_runtime] *******************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Creating custom manifests] *************************
+skipping: [localhost] => (item={'path': 'fluentbit', 'file': 'custom-fluentbit-fluentBit.yaml'}) 
+skipping: [localhost] => (item={'path': 'init', 'file': 'custom-fluentbit-operator-deployment.yaml'}) 
+
+TASK [common : KubeSphere | Preparing fluentbit operator setup] ****************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Deploying new fluentbit operator] ******************
+skipping: [localhost]
+
+TASK [common : KubeSphere | Importing fluentbit status] ************************
+skipping: [localhost]
+
+TASK [common : Setting persistentVolumeReclaimPolicy (mysql)] ******************
+skipping: [localhost]
+
+TASK [common : Setting persistentVolumeReclaimPolicy (etcd)] *******************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=27   changed=22   unreachable=0    failed=0    skipped=112  rescued=0    ignored=0   

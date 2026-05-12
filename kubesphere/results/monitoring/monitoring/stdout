@@ -1,0 +1,115 @@
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [localhost] ***************************************************************
+
+TASK [download : Generating images list] ***************************************
+skipping: [localhost]
+
+TASK [download : Synchronizing images] *****************************************
+
+TASK [kubesphere-defaults : KubeSphere | Setting images' namespace override] ***
+skipping: [localhost]
+
+TASK [kubesphere-defaults : KubeSphere | Configuring defaults] *****************
+ok: [localhost] => {
+    "msg": "Check roles/kubesphere-defaults/defaults/main.yml"
+}
+
+TASK [ks-monitor : Monitoring | Checking old installation files] ***************
+ok: [localhost]
+
+TASK [ks-monitor : Monitoring | Deleting old prometheus-operator files] ********
+skipping: [localhost]
+
+TASK [ks-monitor : Monitoring | Deleting old prometheus-operator] **************
+skipping: [localhost]
+
+TASK [ks-monitor : Monitoring | Deleting old prometheus-operator files] ********
+skipping: [localhost] => (item=prometheus) 
+
+TASK [Monitoring | Getting ks-monitoring installation files] *******************
+changed: [localhost] => (item=prometheus)
+
+TASK [ks-monitor : Monitoring | Checking Prometheus PersistentVolumeClaim] *****
+changed: [localhost]
+
+TASK [ks-monitor : Monitoring | Setting Prometheus data pv size] ***************
+skipping: [localhost]
+
+TASK [ks-monitor : Monitoring | Checking Prometheus retention days] ************
+changed: [localhost]
+
+TASK [ks-monitor : Monitoring | Setting Prometheus retention days] *************
+skipping: [localhost]
+
+TASK [ks-monitor : Monitoring | Checking Prometheus node selector] *************
+changed: [localhost]
+
+TASK [ks-monitor : Monitoring | Setting Prometheus node selector] **************
+skipping: [localhost]
+
+TASK [ks-monitor : Monitoring | Creating manifests] ****************************
+changed: [localhost] => (item={'path': 'prometheus/prometheus-operator', 'file': 'prometheus-operator-deployment.yaml'})
+changed: [localhost] => (item={'path': 'prometheus/prometheus', 'file': 'prometheus-prometheus.yaml'})
+changed: [localhost] => (item={'path': 'prometheus/kube-state-metrics', 'file': 'kube-state-metrics-deployment.yaml'})
+changed: [localhost] => (item={'path': 'prometheus/node-exporter', 'file': 'node-exporter-daemonset.yaml'})
+changed: [localhost] => (item={'path': 'prometheus/alertmanager', 'file': 'alertmanager-alertmanager.yaml'})
+changed: [localhost] => (item={'path': 'prometheus/grafana', 'file': 'grafana-deployment.yaml'})
+changed: [localhost] => (item={'path': 'prometheus/etcd', 'file': 'prometheus-serviceMonitorEtcd.yaml'})
+changed: [localhost] => (item={'path': 'prometheus/etcd', 'file': 'prometheus-endpointsEtcd.yaml'})
+changed: [localhost] => (item={'path': 'prometheus/thanos-ruler', 'file': 'thanos-ruler-thanosRuler.yaml'})
+
+TASK [ks-monitor : Monitoring | Initing prometheus-operator (crds)] ************
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0servicemonitorCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0thanosrulerCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0alertmanagerCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0alertmanagerConfigCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0probeCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0prometheusruleCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0prometheusCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0podmonitorCustomResourceDefinition.yaml)
+
+TASK [ks-monitor : Monitoring | Initing prometheus-operator (resources)] *******
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-clusterRole.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0servicemonitorCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-clusterRoleBinding.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-prometheusRule.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0thanosrulerCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0alertmanagerCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0alertmanagerConfigCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-deployment.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0probeCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0prometheusruleCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-serviceMonitor.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-serviceAccount.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-service.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0prometheusCustomResourceDefinition.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/prometheus/prometheus-operator/prometheus-operator-0podmonitorCustomResourceDefinition.yaml)
+
+TASK [ks-monitor : Monitoring | Installing node-exporter] **********************
+changed: [localhost]
+
+TASK [ks-monitor : Monitoring | Installing kube-state-metrics] *****************
+changed: [localhost]
+
+TASK [ks-monitor : Monitoring | Installing grafana] ****************************
+skipping: [localhost]
+
+TASK [ks-monitor : Monitoring | Installing Prometheus] *************************
+FAILED - RETRYING: Monitoring | Installing Prometheus (5 retries left).
+FAILED - RETRYING: Monitoring | Installing Prometheus (4 retries left).
+FAILED - RETRYING: Monitoring | Installing Prometheus (3 retries left).
+FAILED - RETRYING: Monitoring | Installing Prometheus (2 retries left).
+FAILED - RETRYING: Monitoring | Installing Prometheus (1 retries left).
+failed: [localhost] (item=prometheus) => {"ansible_loop_var": "item", "attempts": 5, "changed": true, "cmd": "/usr/local/bin/kubectl apply -f /kubesphere/kubesphere/prometheus/prometheus", "delta": "0:00:00.422709", "end": "2026-05-12 03:08:29.689924", "failed_when_result": true, "item": "prometheus", "msg": "non-zero return code", "rc": 1, "start": "2026-05-12 03:08:29.267215", "stderr": "error: unable to recognize \"/kubesphere/kubesphere/prometheus/prometheus/prometheus-podDisruptionBudget.yaml\": no matches for kind \"PodDisruptionBudget\" in version \"policy/v1beta1\"", "stderr_lines": ["error: unable to recognize \"/kubesphere/kubesphere/prometheus/prometheus/prometheus-podDisruptionBudget.yaml\": no matches for kind \"PodDisruptionBudget\" in version \"policy/v1beta1\""], "stdout": "clusterrole.rbac.authorization.k8s.io/kubesphere-prometheus-k8s unchanged\nclusterrolebinding.rbac.authorization.k8s.io/kubesphere-prometheus-k8s unchanged\nprometheus.monitoring.coreos.com/k8s unchanged\nprometheusrule.monitoring.coreos.com/prometheus-k8s-prometheus-rules unchanged\nrolebinding.rbac.authorization.k8s.io/prometheus-k8s-config unchanged\nrole.rbac.authorization.k8s.io/prometheus-k8s-config unchanged\nservice/prometheus-k8s unchanged\nserviceaccount/prometheus-k8s unchanged\nservicemonitor.monitoring.coreos.com/prometheus-k8s unchanged", "stdout_lines": ["clusterrole.rbac.authorization.k8s.io/kubesphere-prometheus-k8s unchanged", "clusterrolebinding.rbac.authorization.k8s.io/kubesphere-prometheus-k8s unchanged", "prometheus.monitoring.coreos.com/k8s unchanged", "prometheusrule.monitoring.coreos.com/prometheus-k8s-prometheus-rules unchanged", "rolebinding.rbac.authorization.k8s.io/prometheus-k8s-config unchanged", "role.rbac.authorization.k8s.io/prometheus-k8s-config unchanged", "service/prometheus-k8s unchanged", "serviceaccount/prometheus-k8s unchanged", "servicemonitor.monitoring.coreos.com/prometheus-k8s unchanged"]}
+FAILED - RETRYING: Monitoring | Installing Prometheus (5 retries left).
+FAILED - RETRYING: Monitoring | Installing Prometheus (4 retries left).
+FAILED - RETRYING: Monitoring | Installing Prometheus (3 retries left).
+FAILED - RETRYING: Monitoring | Installing Prometheus (2 retries left).
+FAILED - RETRYING: Monitoring | Installing Prometheus (1 retries left).
+failed: [localhost] (item=prometheus) => {"ansible_loop_var": "item", "attempts": 5, "changed": true, "cmd": "/usr/local/bin/kubectl apply -f /kubesphere/kubesphere/prometheus/prometheus", "delta": "0:00:00.486742", "end": "2026-05-12 03:08:48.188676", "failed_when_result": true, "item": "prometheus", "msg": "non-zero return code", "rc": 1, "start": "2026-05-12 03:08:47.701934", "stderr": "error: unable to recognize \"/kubesphere/kubesphere/prometheus/prometheus/prometheus-podDisruptionBudget.yaml\": no matches for kind \"PodDisruptionBudget\" in version \"policy/v1beta1\"", "stderr_lines": ["error: unable to recognize \"/kubesphere/kubesphere/prometheus/prometheus/prometheus-podDisruptionBudget.yaml\": no matches for kind \"PodDisruptionBudget\" in version \"policy/v1beta1\""], "stdout": "clusterrole.rbac.authorization.k8s.io/kubesphere-prometheus-k8s unchanged\nclusterrolebinding.rbac.authorization.k8s.io/kubesphere-prometheus-k8s unchanged\nprometheus.monitoring.coreos.com/k8s unchanged\nprometheusrule.monitoring.coreos.com/prometheus-k8s-prometheus-rules unchanged\nrolebinding.rbac.authorization.k8s.io/prometheus-k8s-config unchanged\nrole.rbac.authorization.k8s.io/prometheus-k8s-config unchanged\nservice/prometheus-k8s unchanged\nserviceaccount/prometheus-k8s unchanged\nservicemonitor.monitoring.coreos.com/prometheus-k8s unchanged", "stdout_lines": ["clusterrole.rbac.authorization.k8s.io/kubesphere-prometheus-k8s unchanged", "clusterrolebinding.rbac.authorization.k8s.io/kubesphere-prometheus-k8s unchanged", "prometheus.monitoring.coreos.com/k8s unchanged", "prometheusrule.monitoring.coreos.com/prometheus-k8s-prometheus-rules unchanged", "rolebinding.rbac.authorization.k8s.io/prometheus-k8s-config unchanged", "role.rbac.authorization.k8s.io/prometheus-k8s-config unchanged", "service/prometheus-k8s unchanged", "serviceaccount/prometheus-k8s unchanged", "servicemonitor.monitoring.coreos.com/prometheus-k8s unchanged"]}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=11   changed=9    unreachable=0    failed=1    skipped=10   rescued=0    ignored=0   

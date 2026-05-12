@@ -1,0 +1,98 @@
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [localhost] ***************************************************************
+
+TASK [download : Generating images list] ***************************************
+skipping: [localhost]
+
+TASK [download : Synchronizing images] *****************************************
+
+TASK [kubesphere-defaults : KubeSphere | Setting images' namespace override] ***
+skipping: [localhost]
+
+TASK [kubesphere-defaults : KubeSphere | Configuring defaults] *****************
+ok: [localhost] => {
+    "msg": "Check roles/kubesphere-defaults/defaults/main.yml"
+}
+
+TASK [ks-multicluster : Kubefed | Getting kubefed installation files] **********
+changed: [localhost] => (item=kubefed)
+
+TASK [ks-multicluster : debug] *************************************************
+ok: [localhost] => {
+    "msg": "Current Kubernetes version is v1.30.4"
+}
+
+TASK [ks-multicluster : KubeSphere | Setting kubectl image version] ************
+ok: [localhost] => (item={'key': 'v1.22.0', 'value': 'v1.22.0'})
+skipping: [localhost] => (item={'key': 'v1.21.0', 'value': 'v1.21.0'}) 
+skipping: [localhost] => (item={'key': 'v1.20.0', 'value': 'v1.20.0'}) 
+skipping: [localhost] => (item={'key': 'v1.19.0', 'value': 'v1.19.1'}) 
+skipping: [localhost] => (item={'key': 'v1.18.0', 'value': 'v1.18.0'}) 
+skipping: [localhost] => (item={'key': 'v1.17.0', 'value': 'v1.17.0'}) 
+skipping: [localhost] => (item={'key': 'v1.16.0', 'value': 'v1.16.0'}) 
+skipping: [localhost] => (item={'key': 'v1.15.0', 'value': 'v1.0.0'}) 
+
+TASK [ks-multicluster : debug] *************************************************
+ok: [localhost] => {
+    "msg": "Current kubectl image version is v1.22.0"
+}
+
+TASK [ks-multicluster : Kubefed | Creating manifests] **************************
+changed: [localhost] => (item={'path': 'kubefed', 'file': 'custom-values-kubefed.yaml'})
+changed: [localhost] => (item={'path': 'kubefed', 'file': 'tower.yaml'})
+
+TASK [ks-multicluster : Kubefed | Checking kubefed] ****************************
+changed: [localhost]
+
+TASK [ks-multicluster : Tower | Installing tower] ******************************
+changed: [localhost]
+
+TASK [ks-multicluster : Kubefed | Upgrade crd manually] ************************
+changed: [localhost]
+
+TASK [ks-multicluster : Kubefed | Initing kube-federation-system] **************
+changed: [localhost]
+
+TASK [ks-multicluster : Kubfed | Labeling kube-federation-system namespace] ****
+changed: [localhost]
+
+TASK [ks-multicluster : KubeSphere | Checking kubefed-admission-webhook status] ***
+ok: [localhost]
+
+TASK [ks-multicluster : Kubefed | Creating MultiCluster crds] ******************
+failed: [localhost] (item=/kubesphere/kubesphere/kubefed/federatedcrds/update-files.sh) => {"ansible_loop_var": "item", "changed": true, "cmd": "/usr/local/bin/kubectl apply -f /kubesphere/kubesphere/kubefed/federatedcrds/update-files.sh -n kube-federation-system", "delta": "0:00:00.504667", "end": "2026-05-12 03:08:01.769617", "item": "/kubesphere/kubesphere/kubefed/federatedcrds/update-files.sh", "msg": "non-zero return code", "rc": 1, "start": "2026-05-12 03:08:01.264950", "stderr": "error: error validating \"/kubesphere/kubesphere/kubefed/federatedcrds/update-files.sh\": error validating data: invalid object to validate; if you choose to ignore these errors, turn validation off with --validate=false", "stderr_lines": ["error: error validating \"/kubesphere/kubesphere/kubefed/federatedcrds/update-files.sh\": error validating data: invalid object to validate; if you choose to ignore these errors, turn validation off with --validate=false"], "stdout": "", "stdout_lines": []}
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/clusterroles.rbac.authorization.k8s.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/replicasets.apps.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/receivers.notification.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/users.iam.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/globalroles.iam.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/persistentvolumeclaims.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/secrets.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/statefulsets.apps.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/applications.app.k8s.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/serviceaccounts.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/globalrolebindings.iam.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/workspacerolebindings.iam.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/workspaces.tenant.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/ingresses.networking.k8s.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/services.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/deployments.apps.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/limitranges.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/jobs.batch.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/groups.iam.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/clusterrolebindings.rbac.authorization.k8s.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/configmaps.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/workspaceroles.iam.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/groupbindings.iam.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/configs.notification.kubesphere.io.yaml)
+changed: [localhost] => (item=/kubesphere/kubesphere/kubefed/federatedcrds/namespaces.yaml)
+...ignoring
+
+TASK [ks-multicluster : Kubefed | Importing multicluster status] ***************
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=14   changed=9    unreachable=0    failed=0    skipped=3    rescued=0    ignored=1   

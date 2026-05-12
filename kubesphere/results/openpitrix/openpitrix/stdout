@@ -1,0 +1,46 @@
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [localhost] ***************************************************************
+
+TASK [download : Generating images list] ***************************************
+skipping: [localhost]
+
+TASK [download : Synchronizing images] *****************************************
+
+TASK [kubesphere-defaults : KubeSphere | Setting images' namespace override] ***
+skipping: [localhost]
+
+TASK [kubesphere-defaults : KubeSphere | Configuring defaults] *****************
+ok: [localhost] => {
+    "msg": "Check roles/kubesphere-defaults/defaults/main.yml"
+}
+
+TASK [openpitrix : OpenPitrix | Getting OpenPitrix jobs files] *****************
+skipping: [localhost]
+
+TASK [openpitrix : OpenPitrix | Getting OpenPitrix jobs files] *****************
+skipping: [localhost] => (item={'path': 'openpitrix', 'file': 'ks-openpitrix-import.yaml'}) 
+skipping: [localhost] => (item={'path': 'openpitrix', 'file': 'builtin-repo.yaml'}) 
+
+TASK [openpitrix : OpenPitrix | Check OpenPitrix v3.0.0] ***********************
+skipping: [localhost]
+
+TASK [OpenPitrix | Check openpitrix jobs exists or not] ************************
+skipping: [localhost]
+
+TASK [OpenPitrix | Delete previous openpitrix jobs] ****************************
+skipping: [localhost]
+
+TASK [openpitrix : OpenPitrix | Import App] ************************************
+skipping: [localhost]
+
+TASK [openpitrix : OpenPitrix | Check whether builtin repo exists] *************
+skipping: [localhost]
+
+TASK [openpitrix : OpenPitrix | Create builtin repo] ***************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=11   rescued=0    ignored=0   

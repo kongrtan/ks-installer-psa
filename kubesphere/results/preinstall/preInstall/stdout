@@ -1,0 +1,67 @@
+[WARNING]: No inventory was parsed, only implicit localhost is available
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [localhost] ***************************************************************
+
+TASK [download : Generating images list] ***************************************
+skipping: [localhost]
+
+TASK [download : Synchronizing images] *****************************************
+
+TASK [kubesphere-defaults : KubeSphere | Setting images' namespace override] ***
+skipping: [localhost]
+
+TASK [kubesphere-defaults : KubeSphere | Configuring defaults] *****************
+ok: [localhost] => {
+    "msg": "Check roles/kubesphere-defaults/defaults/main.yml"
+}
+
+TASK [preinstall : KubeSphere | Stopping if Kubernetes version is nonsupport] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [preinstall : KubeSphere | Checking StorageClass] *************************
+changed: [localhost]
+
+TASK [preinstall : KubeSphere | Stopping if StorageClass was not found] ********
+skipping: [localhost]
+
+TASK [preinstall : KubeSphere | Checking default StorageClass] *****************
+changed: [localhost]
+
+TASK [preinstall : KubeSphere | Stopping if default StorageClass was not found] ***
+ok: [localhost] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [preinstall : KubeSphere | Stop if bad admin password] ********************
+skipping: [localhost]
+
+TASK [preinstall : KubeSphere | Checking KubeSphere component] *****************
+changed: [localhost]
+
+TASK [preinstall : KubeSphere | Getting KubeSphere component version] **********
+skipping: [localhost]
+
+TASK [preinstall : KubeSphere | Getting KubeSphere component version] **********
+skipping: [localhost] => (item=ks-openldap) 
+skipping: [localhost] => (item=ks-redis) 
+skipping: [localhost] => (item=ks-minio) 
+skipping: [localhost] => (item=ks-openpitrix) 
+skipping: [localhost] => (item=elasticsearch-logging) 
+skipping: [localhost] => (item=elasticsearch-logging-curator) 
+skipping: [localhost] => (item=istio) 
+skipping: [localhost] => (item=istio-init) 
+skipping: [localhost] => (item=jaeger-operator) 
+skipping: [localhost] => (item=ks-jenkins) 
+skipping: [localhost] => (item=ks-sonarqube) 
+skipping: [localhost] => (item=logging-fluentbit-operator) 
+skipping: [localhost] => (item=uc) 
+skipping: [localhost] => (item=metrics-server) 
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=3    unreachable=0    failed=0    skipped=7    rescued=0    ignored=0   
