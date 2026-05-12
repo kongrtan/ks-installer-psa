@@ -1,0 +1,15 @@
+kubectl get crd -o jsonpath="{.items[*].metadata.name}" | tr ' ' '\n' | grep 'kubesphere.io' | xargs -n 1 kubectl delete crd
+kubectl delete ns kubesphere-monitoring-system kubesphere-controls-system kubesphere-logging-system kube-federation-system
+
+kubectl delete mutatingwebhookconfigurations.admissionregistration.k8s.io logsidecar-injector-admission-mutating-webhook-configuration
+kubectl delete mutatingwebhookconfigurations.admissionregistration.k8s.io ks-events-admission-validate-webhook
+
+kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io network-policy-validator-configuration
+kubectl delete validatingwebhookconfigurations.admissionregistration.k8s.io users.iam.kubesphere.io
+
+
+# 관련 PVC 확인
+kubectl get pvc -A | grep kubesphere
+
+# 필요 시 삭제 (주의: 데이터가 영구 삭제됩니다)
+kubectl delete pvc -n kubesphere-system [PVC_NAME]
