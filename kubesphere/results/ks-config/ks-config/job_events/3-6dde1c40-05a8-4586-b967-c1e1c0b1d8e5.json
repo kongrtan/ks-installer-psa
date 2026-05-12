@@ -1,1 +1,0 @@
-{"event": "verbose", "uuid": "6dde1c40-05a8-4586-b967-c1e1c0b1d8e5", "counter": 3, "stdout": "the implicit localhost does not match 'all'", "start_line": 2, "end_line": 3, "runner_ident": "ks-config", "created": "2026-05-12T03:08:48.921967"}

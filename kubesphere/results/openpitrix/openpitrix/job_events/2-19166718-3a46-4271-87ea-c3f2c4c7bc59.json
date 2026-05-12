@@ -1,1 +1,0 @@
-{"event": "verbose", "uuid": "19166718-3a46-4271-87ea-c3f2c4c7bc59", "counter": 2, "stdout": "[WARNING]: provided hosts list is empty, only localhost is available. Note that", "start_line": 1, "end_line": 2, "runner_ident": "openpitrix", "created": "2026-05-12T03:06:44.050963"}
